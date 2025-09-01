@@ -1,0 +1,47 @@
+body {
+      font-family: Georgia, serif;
+      background: #fff;
+      color: #222;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      line-height: 1.7;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    header p {
+      color: #666;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    .post {
+      margin-bottom: 50px;
+    }
+    .post h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .post h2 a {
+      text-decoration: none;
+      color: #000;
+    }
+    .post h2 a:hover {
+      text-decoration: underline;
+    }
+    .post .date {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-top: 60px;
+    }
