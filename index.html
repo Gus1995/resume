@@ -2,45 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gustavo Schuster</title>
-  <meta name="description" content="Personal blog and project log of Gustavo Schuster.">
+  <title>{{ site.title }}</title>
   <link rel="stylesheet" href="style.css">
-
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-  <header>
-    <h1>Gustavo Schuster</h1>
-    <!--<p>Software developer · Finance · AI · Projects & Thoughts</p>-->
-    <section>
-        <a style="margin-left:15px; margin-right:15px" href="projects.html">projects</a>.
-        <a style="margin-left:15px; margin-right:15px" href="">work experience</a>.
-        <a style="margin-left:15px; margin-right:15px" href="">blog</a>
-    </section>
-  </header>
+<header>
+  <h1>{{ site.title }}</h1>
+  <nav>
+    <a href="projects.html">Projects</a>
+    <a href="work.html">Work Experience</a>
+    <a href="blog.html">Blog</a>
+  </nav>
+</header>
 
-  <section class="post">
-    <h2><a href="#">Building Project Cleara</a></h2>
-    <div class="date">August 15, 2025</div>
-    <p>A Kafka-powered miniature clearinghouse system that simulates derivatives trading, margining, and settlement. Here’s how I structured the architecture and what I learned...</p>
-  </section>
+<main>
+  {% for post in site.posts %}
+  <article class="post">
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
+    <p>{{ post.excerpt }}</p>
+  </article>
+  {% endfor %}
+</main>
 
-  <section class="post">
-    <h2><a href="#">Why I’m Studying Quantum Computing</a></h2>
-    <div class="date">July 8, 2025</div>
-    <p>I want to enter the quantum computing field in the next 4 years. This post outlines my roadmap, the skills I need, and how I’m approaching the subject...</p>
-  </section>
-
-  <section class="post">
-    <h2><a href="#">MTG Sandbox: Project Urza</a></h2>
-    <div class="date">August 20, 2025</div>
-    <p>A sandbox-style web application where two players can drag and drop Magic: The Gathering cards in real time. Here’s the tech stack and the challenges...</p>
-  </section>
-
-  <footer>
-    © 2025 Gustavo Schuster
-  </footer>
+<footer>
+  © 2025 Gustavo Schuster
+</footer>
 
 </body>
 </html>
