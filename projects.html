@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience – Blog‑Style Block</title>
+  <meta name="description" content="A clean, responsive blog-like block to showcase job experiences." />
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #111319;
+      --card: #151823;
+      --text: #e7e9ee;
+      --muted: #a6adc8;
+      --primary: #7aa2f7;
+      --accent: #89dceb;
+      --ring: rgba(122, 162, 247, .5);
+      --ok: #94e2d5;
+      --warn: #f9e2af;
+      --danger: #f38ba8;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --surface: #ffffff;
+        --card: #ffffff;
+        --text: #0b0c0f;
+        --muted: #4b5563;
+        --primary: #bdb544;
+        --accent: #305769;
+        --ring: rgba(31, 102, 255, .25);
+        --shadow: 0 10px 30px rgba(0,0,0,.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(122,162,247,.15), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(137,220,235,.15), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .title {
+      font-size: clamp(24px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .tag-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 26px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in oklab, var(--primary) 55%, transparent);
+      background: color-mix(in oklab, var(--primary) 8%, var(--card));
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+      font-size: 14px;
+    }
+
+    .chip[data-active="true"] {
+      background: color-mix(in oklab, var(--primary) 20%, var(--card));
+      border-color: color-mix(in oklab, var(--primary) 80%, transparent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1000px) {
+      .grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .card {
+      position: relative;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), var(--card));
+      padding: 18px 18px 16px 18px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.06);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      isolation: isolate;
+    }
+
+    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,.35); border-color: rgba(255,255,255,.12); }
+
+    .card header {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .meta h3 { margin: 0; font-size: 18px; }
+    .meta .role { color: var(--muted); font-size: 14px; margin-top: 2px; }
+
+    .period { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--muted); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 10px; }
+    .tag {
+      font-size: 12px; font-weight: 600; letter-spacing: .3px;
+      padding: 6px 10px; border-radius: 999px;
+      background: color-mix(in oklab, var(--accent) 10%, var(--surface));
+      border: 1px solid color-mix(in oklab, var(--accent) 55%, transparent);
+      color: var(--text);
+    }
+
+    .summary { margin: 8px 0 8px; }
+
+    details {
+      border-radius: 12px;
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 10px 12px;
+    }
+    details[open] { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+    summary {
+      cursor: pointer; font-weight: 700;
+      list-style: none; outline: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+
+    .bullets { margin: 8px 0 0 18px; }
+    .bullets li { margin: 8px 0; }
+
+    .card footer {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
+    }
+
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge { font-size: 12px; padding: 6px 10px; border-radius: 10px; background: var(--surface); border: 1px solid rgba(255,255,255,.09); }
+
+    .cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border-radius: 12px; text-decoration: none;
+      border: 1px solid color-mix(in oklab, var(--primary) 55%, transparent);
+      background: color-mix(in oklab, var(--primary) 12%, var(--surface));
+      color: var(--text);
+    }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  </style>
+</head>
+<body>
+  <main class="wrap" aria-labelledby="exp-title">
+    <div class="header">
+      <div>
+        <h1 class="title" id="exp-title">Experience</h1>
+        <p class="subtitle">A blog‑style list to preview your roles and highlights.</p>
+      </div>
+
+    </div>
+
+    <section class="grid" id="cards">
+
+      <!-- Card 1 -->
+      <article class="card" data-tags="backend cloud leadership" data-search="Senior Software Engineer Acme Corp Go Kafka PostgreSQL Kubernetes AWS">
+        <header>
+          <div class="meta">
+            <h3>NGtrade</h3>
+            <div class="role">Go • Kafka • PostgreSQL • Kubernetes</div>
+          </div>
+          <div class="period">Jan 2023 — Present</div>
+        </header>
+
+        <p class="summary">Designed and shipped event‑driven services for a high‑throughput clearing workflow.</p>
+
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" data-tags="frontend leadership" data-search="Tech Lead Nimbus UI React TypeScript Vite Tailwind">
+        <header>
+          <div class="meta">
+            <h3>Frontend Tech Lead — Nimbus</h3>
+            <div class="role">React • TypeScript • Vite • Tailwind</div>
+          </div>
+          <div class="period">Aug 2020 — Dec 2022</div>
+        </header>
+
+        <p class="summary">Owned a design‑system and dashboard that served 50+ internal apps.</p>
+        
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card" data-tags="data backend" data-search="Data Engineer Atlas Spark Python Airflow GCP BigQuery">
+        <header>
+          <div class="meta">
+            <h3>Data Engineer — Atlas Analytics</h3>
+            <div class="role">Spark • Python • Airflow • BigQuery</div>
+          </div>
+          <div class="period">Jan 2018 — Jul 2020</div>
+        </header>
+
+        <p class="summary">Built ELT pipelines and cost‑aware data models powering exec dashboards.</p>
+        
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>
