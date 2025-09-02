@@ -1,0 +1,10 @@
+# Site settings
+title: "Gustavo Schuster"
+description: "Personal blog and project log of Gustavo Schuster"
+baseurl: ""        # leave empty if site is hosted at root
+url: "https://Gus1995.github.io"  # replace with your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+theme: minima   # GitHub Pages default theme, optional if you want to use CSS only
+paginate: 5    # number of posts per page (optional)
