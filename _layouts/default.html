@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>{{ page.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
 </head>
 <body>
   <header>
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <h1>My Website</h1>
     <nav>
-      <a href="index.html">About me</a>
-      <a href="profile.html">Profile</a>
-      <a href="work.html">Potfolio</a>
-      <a href="index.html">Blog</a>
+      <a href="{{ "/" | relative_url }}">Home</a>
+      <a href="{{ "/about" | relative_url }}">About</a>
+      <a href="{{ "/projects" | relative_url }}">Projects</a>
+      <a href="{{ "/projects" | relative_url }}">Profile</a>
     </nav>
   </header>
 
@@ -22,7 +21,7 @@
   </main>
 
   <footer>
-    © 2025 Gustavo Schuster
+    <p>&copy; 2025 Gustavo Schuster</p>
   </footer>
 </body>
 </html>
