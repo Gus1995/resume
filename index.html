@@ -1,41 +1,25 @@
----
-layout: default
-title: "Gustavo Schuster"
-
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <header>
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  </header>
 
-<header>
-  <h1>Gustavo</h1>
-  <nav>
-    <a href="projects.html">Projects</a>
-    <a href="work.html">Work Experience</a>
-    <a href="blog.html">Blog</a>
-  </nav>
-</header>
+  <main>
+    <article class="post">
+      <h2>{{ page.title }}</h2>
+      <div class="date">{{ page.date | date: "%B %d, %Y" }}</div>
+      {{ content }}
+    </article>
+  </main>
 
-<main>
-  {% for post in site.posts %}
-  <article class="post">
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
-    <p>{{ post.excerpt }}</p>
-  </article>
-  {% endfor %}
-</main>
-
-<footer>
-  © 2025 Gustavo Schuster
-</footer>
-
+  <footer>
+    © 2025 Gustavo Schuster
+  </footer>
 </body>
 </html>
