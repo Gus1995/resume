@@ -1,6 +1,6 @@
 # Site settings
 title: "Gustavo Schuster"
-baseurl: ""        # leave empty if site is hosted at root
+baseurl: "/resume"
 url: "https://Gus1995.github.io"  # replace with your GitHub Pages URL
 
 # Build settings
