@@ -1,5 +1,5 @@
 title: "Gustavo Schuster"
 description: "Personal blog and project log of Gustavo Schuster"
-baseurl: ""        # leave empty if hosted at root
+baseurl: "/resume"        # leave empty if hosted at root
 url: "https://Gus1995.github.io"  # replace with your GitHub Pages URL
 markdown: kramdown
