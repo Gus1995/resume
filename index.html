@@ -3,4 +3,11 @@ layout: default
 title: "Gustavo Schuster"
 ---
 
-
+{% for post in site.posts %}
+<article class="post">
+  <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <div class="date">{{ post.date | date: "%B %d, %Y" }}</div>
+  <p>{{ post.excerpt | default: post.content | truncatewords: 30 }}</p>
+  <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
+</article>
+{% endfor %}
